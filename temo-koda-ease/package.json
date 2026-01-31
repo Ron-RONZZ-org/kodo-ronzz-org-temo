@@ -1,16 +1,16 @@
 {
-    "name": "ease",
-    "description": "A Ghost theme",
+    "name": "koda-ease",
+    "description": "Ghost theme based on the official Ghost foundation _ease_ theme",
     "version": "1.0.0",
-    "private": true,
+    "private": false,
     "engines": {
         "ghost": ">=5.0.0"
     },
-    "license": "MIT",
+    "license": "AGPL 3.0",
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+        "name": "Rong ZHOU",
+        "email": "ron@ronzz.org",
+        "url": "https://rongzhou.me"
     },
     "keywords": [
         "ghost",
@@ -44,7 +44,11 @@
         "custom": {
             "navigation_layout": {
                 "type": "select",
-                "options": ["Logo on the left", "Logo in the middle", "Stacked"],
+                "options": [
+                    "Logo on the left",
+                    "Logo in the middle",
+                    "Stacked"
+                ],
                 "default": "Logo on the left"
             },
             "title_font": {
