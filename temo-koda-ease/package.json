@@ -12,6 +12,13 @@
         "email": "ron@ronzz.org",
         "url": "https://rongzhou.me"
     },
+    "scripts": {
+        "dev": "rollup -c --environment BUILD:development -w",
+        "build": "rollup -c --environment BUILD:production",
+        "zip": "npm run build && bestzip $npm_package_name.zip assets/* partials/* members/* *.hbs package.json",
+        "test": "npx gscan .",
+        "pretest": "npm run build"
+    },
     "keywords": [
         "ghost",
         "theme",
@@ -74,13 +81,15 @@
             }
         }
     },
-    "scripts": {
-        "dev": "gulp",
-        "test": "gscan .",
-        "zip": "gulp zip"
-    },
     "devDependencies": {
         "@tryghost/shared-theme-assets": "2.5.2",
+        "@babel/core": "^7.21.0",
+        "@babel/preset-env": "^7.20.2",
+        "@rollup/plugin-babel": "^6.0.3",
+        "@rollup/plugin-commonjs": "^29.0.0",
+        "@rollup/plugin-node-resolve": "^16.0.0",
+        "@rollup/plugin-terser": "^0.4.0",
+        "bestzip": "^2.2.1",
         "autoprefixer": "10.4.23",
         "beeper": "2.1.0",
         "cssnano": "7.1.2",
@@ -94,6 +103,9 @@
         "ordered-read-streams": "2.0.0",
         "postcss": "8.5.6",
         "postcss-easy-import": "4.0.0",
-        "pump": "3.0.3"
+        "pump": "3.0.3",
+        "rollup": "^4.0.0",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-postcss": "^4.0.2"
     }
 }
