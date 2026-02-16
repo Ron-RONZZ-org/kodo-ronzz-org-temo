@@ -44,7 +44,7 @@ jQuery.noConflict();
 
 document.addEventListener('DOMContentLoaded', function () {
     // Check if window.markmap_url is defined (set via post header code injection)
-    if (!window.markmap_url) return;
+    if (!window.markmap_url || typeof window.markmap_url !== 'string') return;
     
     const urlValue = window.markmap_url;
     
@@ -78,5 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector('.gh-content');
     if (container) {
         container.prepend(linkElement);
+    } else {
+        console.warn('Could not find .gh-content container for markmap button');
     }
 });
