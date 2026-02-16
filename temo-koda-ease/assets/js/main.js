@@ -41,3 +41,39 @@ jQuery.noConflict();
         },
     });
 })(jQuery);
+
+document.addEventListener('DOMContentLoaded', function () {
+    const targetContainer = document.getElementById('markmap-button-container');
+    
+    if (!targetContainer) return;
+    
+    const urlValue = targetContainer.getAttribute('data-markmap-url');
+    
+    if (!urlValue) return;
+    
+    try {
+        const parsedUrl = new URL(urlValue);
+        if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
+            console.warn('Invalid markmap URL protocol:', parsedUrl.protocol);
+            return;
+        }
+    } catch (e) {
+        console.warn('Invalid markmap URL:', urlValue);
+        return;
+    }
+    
+    const linkElement = document.createElement('a');
+    linkElement.href = urlValue;
+    linkElement.className = 'markmap-button';
+    linkElement.target = '_blank';
+    linkElement.rel = 'noopener noreferrer';
+    
+    // Create text nodes for each line to avoid XSS risks
+    linkElement.appendChild(document.createTextNode('Vidi ĉi tiun kiel markmapon'));
+    linkElement.appendChild(document.createElement('br'));
+    linkElement.appendChild(document.createTextNode('Visualiser ce contenu en markmap'));
+    linkElement.appendChild(document.createElement('br'));
+    linkElement.appendChild(document.createTextNode('View this content in markmap form'));
+    
+    targetContainer.appendChild(linkElement);
+});
