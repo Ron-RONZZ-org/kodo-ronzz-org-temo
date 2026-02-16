@@ -43,14 +43,12 @@ jQuery.noConflict();
 })(jQuery);
 
 document.addEventListener('DOMContentLoaded', function () {
-    const targetContainer = document.getElementById('markmap-button-container');
+    // Check if window.markmap_url is defined (set via post header code injection)
+    if (!window.markmap_url) return;
     
-    if (!targetContainer) return;
+    const urlValue = window.markmap_url;
     
-    const urlValue = targetContainer.getAttribute('data-markmap-url');
-    
-    if (!urlValue) return;
-    
+    // Validate the URL
     try {
         const parsedUrl = new URL(urlValue);
         if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
@@ -62,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
     
+    // Create the button element
     const linkElement = document.createElement('a');
     linkElement.href = urlValue;
     linkElement.className = 'markmap-button';
@@ -75,5 +74,9 @@ document.addEventListener('DOMContentLoaded', function () {
     linkElement.appendChild(document.createElement('br'));
     linkElement.appendChild(document.createTextNode('View this content in markmap form'));
     
-    targetContainer.appendChild(linkElement);
+    // Insert button at the top of post content
+    const container = document.querySelector('.gh-content');
+    if (container) {
+        container.prepend(linkElement);
+    }
 });
