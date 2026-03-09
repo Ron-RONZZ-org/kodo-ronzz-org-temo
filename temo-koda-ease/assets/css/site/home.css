@@ -1,0 +1,235 @@
+/* ── Koda home: hero ── */
+.koda-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--koda-bg);
+    text-align: center;
+}
+
+.koda-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 24px;
+}
+
+.koda-hero-text {
+    font-family: var(--koda-font-retro);
+    font-size: clamp(3rem, 8vw, 7rem);
+    color: var(--koda-text-white);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 20px rgba(155, 241, 65, 0.25);
+}
+
+/* Scroll-down button (two chevron-down arrows) */
+.koda-scroll-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--koda-text-white);
+    transition: color 0.2s ease, transform 0.2s ease;
+    animation: koda-bounce 1.6s ease-in-out infinite;
+}
+
+.koda-scroll-btn:hover {
+    color: var(--koda-highlight-green);
+    transform: translateY(4px);
+    animation: none;
+}
+
+.koda-scroll-btn svg {
+    display: block;
+    width: 36px;
+    height: 28px;
+    margin-top: -6px;
+}
+
+@keyframes koda-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+/* ── Koda home: menu section ── */
+.koda-menu {
+    background-color: var(--koda-menu-grey);
+    min-height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+}
+
+.koda-menu.is-visible {
+    display: flex;
+}
+
+.koda-menu-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+/* Individual menu item */
+.koda-menu-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(245, 245, 245, 0.25);
+    border-radius: 4px;
+    padding: 20px 16px;
+    text-align: center;
+    color: var(--koda-text-white);
+    text-decoration: none;
+    /* 3-D offset effect */
+    box-shadow: 4px 4px 0 0 var(--koda-highlight-green);
+    transition:
+        color 0.15s ease,
+        background-color 0.15s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.koda-menu-item:hover {
+    color: var(--koda-highlight-white);
+    background-color: rgba(155, 241, 65, 0.12);
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0 0 var(--koda-highlight-green);
+    opacity: 1;
+}
+
+/* Square SVG icon */
+.koda-menu-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+}
+
+.koda-menu-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Title */
+.koda-menu-title {
+    font-family: var(--koda-font-retro);
+    font-size: 2rem;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Tooltip description (shown on hover) */
+.koda-menu-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--koda-highlight-green);
+    color: var(--koda-menu-grey);
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    max-width: 220px;
+    white-space: normal;
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 100;
+}
+
+.koda-menu-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--koda-highlight-green);
+}
+
+.koda-menu-item:hover .koda-menu-tooltip {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .koda-menu-inner {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 20px;
+    }
+
+    .koda-menu-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* ── Koda footer ── */
+.gh-foot {
+    background-color: var(--koda-menu-grey);
+    color: var(--koda-text-white);
+    padding: 32px 0;
+    margin-top: auto;
+}
+
+.gh-foot-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.gh-copyright {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+.gh-copyright p {
+    margin: 0;
+}
+
+.gh-copyright a {
+    color: var(--koda-highlight-green);
+    text-decoration: underline;
+}
+
+.gh-copyright a:hover {
+    color: var(--koda-highlight-white);
+    opacity: 1;
+}
+
+.gh-powered-by {
+    font-size: 1.3rem;
+    color: rgba(245, 245, 245, 0.6);
+}
+
+.gh-powered-by a {
+    color: rgba(245, 245, 245, 0.6);
+    text-decoration: underline;
+}
+
+.gh-powered-by a:hover {
+    color: var(--koda-highlight-green);
+    opacity: 1;
+}

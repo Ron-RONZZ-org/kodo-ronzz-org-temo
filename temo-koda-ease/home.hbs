@@ -1,0 +1,41 @@
+{{!< default}}
+
+{{! Hero section }}
+<section class="koda-hero" id="kodaHero">
+    <div class="koda-hero-content">
+        <h1 class="koda-hero-text">Kodo. Vivo. En Esperanto.</h1>
+        <button class="koda-scroll-btn" id="kodaScrollBtn" aria-label="Scroll to menu" aria-controls="kodaMenu" aria-expanded="false">
+            {{! Two chevron-down arrows }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" fill="none" aria-hidden="true">
+                <path d="M2 2L12 12L22 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" fill="none" aria-hidden="true">
+                <path d="M2 2L12 12L22 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+</section>
+
+{{! Menu section — revealed when scroll button is clicked }}
+<section class="koda-menu" id="kodaMenu" aria-hidden="true">
+    <div class="koda-menu-inner">
+        {{#get "tags" limit="all" filter="visibility:public"}}
+            {{#foreach tags}}
+            <a class="koda-menu-item" href="{{url}}">
+                {{! Square category icon }}
+                <div class="koda-menu-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+                        <rect x="3" y="3" width="42" height="42" rx="4" stroke="currentColor" stroke-width="3"/>
+                        <line x1="3" y1="16" x2="45" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="14" y1="3" x2="14" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="koda-menu-title">{{name}}</span>
+                {{#if description}}
+                <span class="koda-menu-tooltip">{{description}}</span>
+                {{/if}}
+            </a>
+            {{/foreach}}
+        {{/get}}
+    </div>
+</section>

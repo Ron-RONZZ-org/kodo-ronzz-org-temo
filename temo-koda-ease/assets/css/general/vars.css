@@ -14,4 +14,12 @@
     --animation-base: ease-in-out;
     --h1-size: 3.8rem;
     --header-spacing: 60px;
+
+    /* Koda theme */
+    --koda-menu-grey: #2b2c35;
+    --koda-bg: #fdfbfb;
+    --koda-highlight-green: #9bf141;
+    --koda-text-white: #f5f5f5;
+    --koda-highlight-white: #ffffff;
+    --koda-font-retro: 'VT323', monospace;
 }

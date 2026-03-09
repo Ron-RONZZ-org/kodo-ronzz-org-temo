@@ -24,7 +24,7 @@ import livereload from 'rollup-plugin-livereload';
 export default defineConfig({
     input: 'assets/js/index.js',
     output: {
-        dir: "assets/built",
+        file: "assets/built/main.min.js",
         sourcemap: true,
         format: 'iife',
         plugins: [terser()]
@@ -34,7 +34,7 @@ export default defineConfig({
         nodeResolve(), 
         babel({ babelHelpers: 'bundled' }),
         postcss({
-            extract: true,
+            extract: "screen.css",
             sourceMap: true,
             plugins: [
                 atImport(),
